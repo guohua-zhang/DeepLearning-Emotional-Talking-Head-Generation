@@ -2,7 +2,7 @@
 
 本项目旨在梳理和总结本人在**Emotional Talking Head Generation**方向的学习和工作
 
-
+"Emotions shape ourselves, determine who we are, and affect our daily behavior"
 
 ## 方向概述
 
@@ -12,7 +12,7 @@
 
 <div>			<!--块级封装-->
     <center>	<!--将图片和文字居中-->
-    <img src="./imgs/img1.png"
+    <img src="imgs/img1.png"
          alt="无法显示Example"
          style="zoom:2"/>
     <br>		<!--换行-->
@@ -20,6 +20,7 @@
     Example	From NED（CVPR2022）<!--标题-->
     </center>
 </div>
+
 
 
 
