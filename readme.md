@@ -52,6 +52,12 @@ https://github.com/face-analysis/emonet
 
 https://github.com/michaildoukas/head2head
 
+代码部分复习：
+
+https://zhuanlan.zhihu.com/p/539920065?utm_id=0
+
+https://blog.csdn.net/u014426939/article/details/124478339
+
 ## （2）复现工作
 
 ### 1、DSM
