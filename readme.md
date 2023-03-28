@@ -12,7 +12,7 @@
 
 <div>			<!--块级封装-->
     <center>	<!--将图片和文字居中-->
-    <img src="imgs/img1.png"
+    <img src="https://raw.githubusercontent.com/guohua-zhang/Emotional-Talking-Head-Generation/main/imgs/img1.png"
          alt="无法显示Example"
          style="zoom:2"/>
     <br>		<!--换行-->
@@ -20,6 +20,7 @@
     Example	From NED（CVPR2022）<!--标题-->
     </center>
 </div>
+
 
 
 
