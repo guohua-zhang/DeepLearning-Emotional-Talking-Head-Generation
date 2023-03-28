@@ -43,7 +43,55 @@
 
 ## 二、复现工作
 
-**ing**..............................
+## （1）参考工作
+
+https://www.nature.com/articles/s42256-020-00280-0.epdf?sharing_token=8UEdDpr-K7UpoDi5SYjGLtRgN0jAjWel9jnR3ZoTv0NmJm5LtKLATZX-wg4Cg96PU_Xagw0dC67imfvbYZzOaFRYUs-6qIlabUXidsXjQRkYDNWUaArHiGy8zxyz2DozptfHYg3G_HumDAHYUwgV2PRTjKDd-8LKGzbMstnxIxY%3D
+
+https://github.com/face-analysis/emonet
+
+https://github.com/michaildoukas/head2head
+
+## （2）复现工作
+
+### 1、DSM
+
+由于本论文作者没有开源代码，本人只能尝试按照论文中描述的细节去尽可能地还原效果
+
+#### a、VA值获取部分
+
+参考Emonet论文：https://github.com/face-analysis/emonet
+
+#### b、3DMM——Exp50向量部分
+
+参考head2head++：https://github.com/michaildoukas/head2head
+
+#### c、Expression Decoder部分
+
+参考原论文中详细描述部分
+
+##### c1、模型实质
+
+训练出2D的人脸VA向量到3D表情向量exp50的映射（此处选用了DECA作为人脸重建方法，和原论文中的exp30有不同，但本质思想都是一样的）
+
+是一个person-specific的模型映射，需要针对不同object进行训练
+
+##### c2、网络结构
+
+6层的fully connected layers：4096, 2048, 1024, 512, 128 and 64
+
+激活函数：relu
+
+技巧：dropout
+
+##### c3、训练细节
+
+训练率：e-3
+
+batchsize：32
+
+优化器：Adam
+
+epoch：1000
 
 
 
