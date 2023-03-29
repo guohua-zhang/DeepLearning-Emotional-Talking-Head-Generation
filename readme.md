@@ -2,26 +2,15 @@
 
 本项目旨在梳理和总结本人在**Emotional Talking Head Generation**方向的学习和工作
 
-"Emotions shape ourselves, determine who we are, and affect our daily behavior"
+**"Emotions shape ourselves, determine who we are, and affect our daily behaviors"**
 
 ## 方向概述
 
 个人理解：Talking Head Generation这个方向在于生成真实的人脸图像或者连续真实的人脸视频帧，目前已经有一定的发展；然而，可以精确控制**Face Emotion、Lip Movement、Talking Style、Blink、Regional Facial Movement**这些人脸细节的方法仍在探索中，因此产生**Emotional Talking Head Generation**这条道路。目前，主要是以**3DMM**和**GAN**作为核心，以**Blend、Alignment**等等方法作为辅助去探索新的框架和优化约束方法。
 
+<img src="imgs/img1.png" width="100%" height="100%"/>
 
-
-<div>			<!--块级封装-->
-    <center>	<!--将图片和文字居中-->
-    <img src="https://raw.githubusercontent.com/guohua-zhang/Emotional-Talking-Head-Generation/main/imgs/img1.png"
-         alt="无法显示Example"
-         style="zoom:2"/>
-    <br>		<!--换行-->
-    <b>
-    Example	From NED（CVPR2022）<!--标题-->
-    </center>
-</div>
-
-
+Example From NED（CVPR2022）
 
 
 
@@ -38,67 +27,137 @@
 
 ## 一、方向脉络梳理
 
-**ing**..............................
+### Based on 2D image
+
+
+
+### Based on 3DMM
+
+- NED（CVPR2022）
+
+  - [NED](https://arxiv.org/pdf/2112.00585.pdf)
+  - 摘要：
+  - 细节：
+
+  <img src="imgs/img3.png" width="100%" height="100%"/>
+
+- DSM（ECCV2022）
+
+  - [DSM](https://arxiv.org/pdf/2111.07902.pdf)
+  - 摘要：
+  - 细节：
+
+  <img src="imgs/img2.png" width="100%" height="100%"/>
+
+- 
 
 
 
 ## 二、复现工作
 
-## （1）参考工作
+### DSM
 
-https://www.nature.com/articles/s42256-020-00280-0.epdf?sharing_token=8UEdDpr-K7UpoDi5SYjGLtRgN0jAjWel9jnR3ZoTv0NmJm5LtKLATZX-wg4Cg96PU_Xagw0dC67imfvbYZzOaFRYUs-6qIlabUXidsXjQRkYDNWUaArHiGy8zxyz2DozptfHYg3G_HumDAHYUwgV2PRTjKDd-8LKGzbMstnxIxY%3D
+由于本论文作者没有开源代码，本人只能尝试按照论文中描述的细节去尽可能地还原效果，复现代码即将公布
 
-https://github.com/face-analysis/emonet
+[论文链接](https://arxiv.org/pdf/2111.07902v2.pdf)
 
-https://github.com/michaildoukas/head2head
+<img src="imgs/img2.png" width="100%" height="100%"/>
 
-代码部分复习：
+本文的整体网络框架
 
-https://zhuanlan.zhihu.com/p/539920065?utm_id=0
+#### Framework
 
-https://blog.csdn.net/u014426939/article/details/124478339
+##### Person-specific dataset of facial expressions
 
-## （2）复现工作
+- Valence-arousal values
 
-### 1、DSM
+  参考[Emonet论文](https://github.com/face-analysis/emonet)
 
-由于本论文作者没有开源代码，本人只能尝试按照论文中描述的细节去尽可能地还原效果
+- 3D expression coefficients
 
-#### a、VA值获取部分
+  参考[head2head++](https://github.com/michaildoukas/head2head)
 
-参考Emonet论文：https://github.com/face-analysis/emonet
+##### Expression decoder network
 
-#### b、3DMM——Exp50向量部分
+参考原论文描述
 
-参考head2head++：https://github.com/michaildoukas/head2head
+```
+The network consists of 6 fully-connected layers with 4096, 2048, 1024, 512, 128 and 64 units per layer respectively and with Rectified Linear Units (RELU) to introduce non-linearities
+```
 
-#### c、Expression Decoder部分
+- 模型本质
 
-参考原论文中详细描述部分
+  训练出2D的人脸VA向量到3D表情向量exp50的映射（**此处选用了DECA作为人脸重建方法，和原论文中的exp30有不同，但本质思想都是一样的**）是一个person-specific的模型映射，需要**针对不同object进行训练**
 
-##### c1、模型实质
+- 网络结构
 
-训练出2D的人脸VA向量到3D表情向量exp50的映射（此处选用了DECA作为人脸重建方法，和原论文中的exp30有不同，但本质思想都是一样的）
+  - 6层的fully connected layers：4096, 2048, 1024, 512, 128 and 64
+  - 激活函数：relu
+  - 防止过拟合：dropout
 
-是一个person-specific的模型映射，需要针对不同object进行训练
+- 训练细节
 
-##### c2、网络结构
+  - 训练率：e-3
+  - batchsize：32
+  - 优化器：Adam
+  - epoch：1000
 
-6层的fully connected layers：4096, 2048, 1024, 512, 128 and 64
+##### Synthesis of photorealistic manipulated videos
 
-激活函数：relu
 
-技巧：dropout
 
-##### c3、训练细节
+#### Implement
 
-训练率：e-3
+代码实现非官方提供的，是本人自己实现的，如有错误，欢迎指导和交流
 
-batchsize：32
+##### Dataset Prepare
 
-优化器：Adam
+- Valence-arousal values
 
-epoch：1000
+  ```shell
+  ./scripts/read_va_test_name.sh train
+  ./scripts/emonet_test.sh train
+  ```
+
+  
+
+- 3D expression coefficients
+
+  ```shell
+  ./scripts/pre_all.sh
+  ```
+
+  
+
+##### Train
+
+- Expression decoder network
+
+  ```shell
+  ./scripts/train_expDecoder.sh train
+  ```
+
+  
+
+- Renderer
+
+  ```shell
+  ./scripts/train_renderer.sh
+  ```
+
+  
+
+##### Test
+
+ing....
+
+
+
+## 三、知识点总结
+
+[机器学习常见metric](https://zhuanlan.zhihu.com/p/539920065?utm_id=0)
+
+[Dataloader](https://blog.csdn.net/u014426939/article/details/124478339)
 
 
 
@@ -106,5 +165,10 @@ epoch：1000
 
 **Thanks to：**
 
+[DSM](https://arxiv.org/pdf/2111.07902v2.pdf)
 
+[Emonet](https://github.com/face-analysis/emonet)
 
+[head2head++](https://github.com/michaildoukas/head2head)
+
+[Emonet论文](https://www.nature.com/articles/s42256-020-00280-0.epdf?sharing_token=8UEdDpr-K7UpoDi5SYjGLtRgN0jAjWel9jnR3ZoTv0NmJm5LtKLATZX-wg4Cg96PU_Xagw0dC67imfvbYZzOaFRYUs-6qIlabUXidsXjQRkYDNWUaArHiGy8zxyz2DozptfHYg3G_HumDAHYUwgV2PRTjKDd-8LKGzbMstnxIxY%3D)
