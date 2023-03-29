@@ -1,4 +1,4 @@
-# Emotional Talking Head Generation项目
+# [DeepLearning深度学习]Emotional Talking Head Generation项目
 
 本项目旨在梳理和总结本人在**Emotional Talking Head Generation**方向的学习和工作
 
@@ -29,7 +29,23 @@ Example From NED（CVPR2022）
 
 ### Based on 2D image
 
+- GANmut（CVPR2021）
 
+  - [GANmut](https://openaccess.thecvf.com/content/CVPR2021/papers/dApolito_GANmut_Learning_Interpretable_Conditional_Space_for_Gamut_of_Emotions_CVPR_2021_paper.pdf)
+  - 摘要：
+  - 细节：
+
+  <img src="imgs/img4.png" width="100%" height="100%"/>
+
+- ICface（WACV2020）
+
+  - [ICface](https://arxiv.org/pdf/1904.01909.pdf)
+  - 摘要：
+  - 细节：
+
+  <img src="imgs/img5.png" width="100%" height="100%"/>
+
+- 
 
 ### Based on 3DMM
 
