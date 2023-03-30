@@ -135,7 +135,19 @@ The network consists of 6 fully-connected layers with 4096, 2048, 1024, 512, 128
   ./scripts/emonet_test.sh train
   ```
 
-  
+  可以使用一下代码实现VA space的可视化
+
+  ```shell
+  ./scripts/show_va_space.sh
+  ```
+
+  以下是训练集中每个ID的VA space可视化结果
+
+  <img src="imgs/M003.png" width="30%" height="30%"/>
+
+  <img src="imgs/M009.png" width="30%" height="30%"/>
+
+  <img src="imgs/W029.png" width="30%" height="30%"/>
 
 - 3D expression coefficients
 
