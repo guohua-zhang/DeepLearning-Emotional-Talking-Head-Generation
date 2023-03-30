@@ -177,7 +177,22 @@ The network consists of 6 fully-connected layers with 4096, 2048, 1024, 512, 128
 
 ##### Test
 
-ing....
+- emotion label ---> VA value
+
+  使用一下代码可以进行emotion label到VA space的随机采样，并且进行B-spline interpolation，从而实现VA pair和时间序列帧的一一对应
+
+  ```shell
+  ```
+
+  随机采样结果如下：
+
+  <img src="imgs/img6.png" width="30%" height="30%"/>
+
+  B-spline interpolation结果如下：
+
+  
+
+- 2D VA vector ---> 30D expression vector
 
 
 
