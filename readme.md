@@ -209,8 +209,9 @@ The network consists of 6 fully-connected layers with 4096, 2048, 1024, 512, 128
   使用renderer将nmfc和eye videos映射为frame images
 
   ```shell
+  ./scripts/postprocess.sh
   ```
-
+  
   
 
 
