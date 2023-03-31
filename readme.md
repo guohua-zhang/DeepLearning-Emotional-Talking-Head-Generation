@@ -182,6 +182,8 @@ The network consists of 6 fully-connected layers with 4096, 2048, 1024, 512, 128
   使用一下代码可以进行emotion label到VA space的随机采样，并且进行B-spline interpolation，从而实现VA pair和时间序列帧的一一对应
 
   ```shell
+  ./scripts/show_va_space.sh
+  python ./EmoNet/caiyang.py
   ```
 
   随机采样结果如下：
@@ -190,9 +192,26 @@ The network consists of 6 fully-connected layers with 4096, 2048, 1024, 512, 128
 
   B-spline interpolation结果如下：
 
-  
+  ```shell
+  此处暂时不做此操作
+  ```
 
-- 2D VA vector ---> 30D expression vector
+- 2D VA vector ---> 50D expression vector
+
+  使用训练好的person-specific的expression decoder来推理出50D expression vector
+
+  ```shell
+  ./scripts/label2exp.sh
+  ```
+
+- 50D expression vector ---> generated frames
+
+  使用renderer将nmfc和eye videos映射为frame images
+
+  ```shell
+  ```
+
+  
 
 
 
