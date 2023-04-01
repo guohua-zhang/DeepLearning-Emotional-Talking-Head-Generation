@@ -18,9 +18,9 @@ Example From NED（CVPR2022）
 
 - [ ] 方向脉络梳理
 - [ ] 复现工作
-  - [ ] GANmut（CVPR2021）
+  - [x] GANmut（CVPR2021）
   - [ ] IC-face（WACV2020）
-  - [ ] DSM（ECCV2022）
+  - [x] DSM（ECCV2022）
 - [ ] Our work
 
 
@@ -62,6 +62,11 @@ Example From NED（CVPR2022）
   - [DSM](https://arxiv.org/pdf/2111.07902.pdf)
   - 摘要：
   - 细节：
+    - 表情编辑方式：训练一个VA值到3DMM表情参数的映射网络，实现emotion label到VA值再到3DMM表情参数的转换，从而可以利用emotion label来控制情绪的变化
+    - 图片生成方式：
+      - 三维重建：采用3DMM形式的重建，主要提取face landmark、camera、identity、exp等参数，合成nmfc和eye video图片帧
+      - 训练一个person-specific的renderer，便于适应多种情绪风格的图像生成
+
 
   <img src="imgs/img2.png" width="100%" height="100%"/>
 
