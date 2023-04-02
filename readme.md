@@ -219,7 +219,13 @@ The network consists of 6 fully-connected layers with 4096, 2048, 1024, 512, 128
   
   
 
+### GANmut
 
+本论文提供了训练和测试代码，因此直接使用提供的代码，适用到我们的实验设置中
+
+[论文链接](https://openaccess.thecvf.com/content/CVPR2021/papers/dApolito_GANmut_Learning_Interpretable_Conditional_Space_for_Gamut_of_Emotions_CVPR_2021_paper.pdf)
+
+<img src="imgs/img7.png" width="100%" height="100%"/>
 
 ## 三、知识点总结
 
