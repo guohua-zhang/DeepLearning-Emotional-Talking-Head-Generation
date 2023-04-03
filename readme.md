@@ -227,6 +227,10 @@ The network consists of 6 fully-connected layers with 4096, 2048, 1024, 512, 128
 
 <img src="imgs/img7.png" width="100%" height="100%"/>
 
+### ICface
+
+
+
 ## 三、知识点总结
 
 [机器学习常见metric](https://zhuanlan.zhihu.com/p/539920065?utm_id=0)
